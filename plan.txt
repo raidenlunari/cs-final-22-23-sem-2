@@ -10,7 +10,37 @@ Program 1: Attendance (moon)
     Allow the teacher to add holiday days if they choose to do so and mark the day off
 
     All above actions involve creating a new type of function, which can be called depending on what the user chooses to input as action on the main function
-    The teacher will go through three main functions; one to input the class details, one to
+    The teacher will go through three main functions; one to input the class details, one to edit the details per student per class per day, and one to check details at the end of a six-
+    After one of these main functions has been completed, it cannot be rerun, but the details which have been set during the function can be changed if another function allows it.
+
+    Layers of Access:
+    Phase 1:
+        Set Classroom (creates grid for grid-classroom, ignored for non-grid classrooms)
+            Input grid dimensions horizontally x vertically (e.g. 6x6 desks, 3x7 desks, 7x3 desks, etc.)
+            Set students per grid (input grid location, then input student)
+        Set initial student details
+            Create notes per kid (including name, personal information, special information, etc.)
+
+    Phase 2:
+        Day (cannot go backwards)
+            Classes (can exit and enter a class, three in total) (x3)
+                Edit student attendance
+                Edit student attendance en masse
+                Edit student attendance from another day
+                Edit student location in class
+                Edit student status (enrolled, un-enrolled, suspended, expelled)
+                Edit student details (grades, name, personal information, special information, etc.)
+                View student details, location, attendance, etc.
+                View classroom details and layout en masse
+                View average statistics and total statistics per class
+                Exit class
+            Move past day (cannot be reversed, will involve an "are you sure?")
+
+    Phase 3:
+        View Details of each student, and attendance
+        View average statistics and total statistics per class
+        Close classes one by one
+
 
 Program 2:
 
