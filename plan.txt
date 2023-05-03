@@ -7,4 +7,8 @@ Program 1: Attendance
 
 Program 2:
 
-Program 3:
+Program 3: Notes (eric)
+    Plan: Allow the user to track teacher notes for students (5). Across 3 classes over the course of 6 weeks.  
+    Allow the user to enter daily notes, edit and view.
+    Allow the user to sharing notes (via link).
+    Allow the user to see a calendar which notes were taken for each date.
