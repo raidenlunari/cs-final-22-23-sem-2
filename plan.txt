@@ -19,3 +19,5 @@ Program 3: Notes (eric)
     Allow the user to enter daily notes, edit and view.
     Allow the user to sharing notes (via link).
     Allow the user to see a calendar which notes were taken for each date.
+    Allow the user to mark the students which had no notes.
+    Allow the user to check previous notes from any day from the calendar.
