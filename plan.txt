@@ -1,0 +1,10 @@
+Program 1: Attendance
+    Plan: Allow the user to customise a classroom first with a layout of desks and table members, and customize details for each student
+    Allow the user to type in types of attendance per day, such as unexcused absence, present, and tardy per student by inputting in values
+    Allow the user to view the details of a certain student by using the view function followed by a student's value or name
+    Allow the user to edit the details of a certain student by using the edit function followed by the day to change and the student name/value
+    Allow the user to input a new student's details by inputting
+
+Program 2:
+
+Program 3:
