@@ -1,9 +1,16 @@
-Program 1: Attendance
+Program 1: Attendance (moon)
     Plan: Allow the user to customise a classroom first with a layout of desks and table members, and customize details for each student
     Allow the user to type in types of attendance per day, such as unexcused absence, present, and tardy per student by inputting in values
     Allow the user to view the details of a certain student by using the view function followed by a student's value or name
     Allow the user to edit the details of a certain student by using the edit function followed by the day to change and the student name/value
-    Allow the user to input a new student's details by inputting
+    Allow the user to input a new student's details by inputting their student's name and location in the classroom per day
+    Allow the user to edit a student's details by inputting their student's name and the detail which they choose to change
+    Allow the user to edit a student's location by inputting their student's name, current location, and new location
+    Allow the user to remove or expel a student if they choose to do so by inputting the student's name and confirming
+    Allow the teacher to add holiday days if they choose to do so and mark the day off
+
+    All above actions involve creating a new type of function, which can be called depending on what the user chooses to input as action on the main function
+    The teacher will go through three main functions; one to input the class details, one to
 
 Program 2:
 
