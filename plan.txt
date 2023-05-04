@@ -1,4 +1,6 @@
 Program 1: Attendance (moon)
+    Summary: The attendance function is meant to allow a teacher to set up to any number of classes, and put students in each and manage attendance, status, location, and details for them all.
+
     Plan: Allow the user to customise a classroom first with a layout of desks and table members, and customize details for each student
     Allow the user to type in types of attendance per day, such as unexcused absence, present, and tardy per student by inputting in values
     Allow the user to view the details of a certain student by using the view function followed by a student's value or name
@@ -14,7 +16,7 @@ Program 1: Attendance (moon)
     After one of these main functions has been completed, it cannot be rerun, but the details which have been set during the function can be changed if another function allows it.
 
     For the numbers, see the wiki (attendance_wiki), gives details for all of them and their functions if not given here
-    
+
     Layers of Access:
     Phase 1 (1):
         Set Classroom (2)
