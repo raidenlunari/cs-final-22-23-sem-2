@@ -13,33 +13,36 @@ Program 1: Attendance (moon)
     The teacher will go through three main functions; one to input the class details, one to edit the details per student per class per day, and one to check details at the end of a six-
     After one of these main functions has been completed, it cannot be rerun, but the details which have been set during the function can be changed if another function allows it.
 
+    For the numbers, see the wiki (attendance_wiki), gives details for all of them and their functions if not given here
+    
     Layers of Access:
-    Phase 1:
-        Set Classroom (creates grid for grid-classroom, ignored for non-grid classrooms)
-            Input grid dimensions horizontally x vertically (e.g. 6x6 desks, 3x7 desks, 7x3 desks, etc.)
+    Phase 1 (1):
+        Set Classroom (2)
             Set students per grid (input grid location, then input student)
-        Set initial student details
+        Set initial student details (3)
             Create notes per kid (including name, personal information, special information, etc.)
 
     Phase 2:
         Day (cannot go backwards)
             Classes (can exit and enter a class, three in total) (x3)
-                Edit student attendance
-                Edit student attendance en masse
-                Edit student attendance from another day
-                Edit student location in class
-                Edit student status (enrolled, un-enrolled, suspended, expelled)
-                Edit student details (grades, name, personal information, special information, etc.)
-                View student details, location, attendance, etc.
-                View classroom details and layout en masse
-                View average statistics and total statistics per class
-                Exit class
-            Move past day (cannot be reversed, will involve an "are you sure?")
+                Edit student attendance (4)
+                Edit student attendance en masse (5)
+                Edit student attendance from another day (6)
+                Edit student location in class (7)
+                Edit student status (enrolled, un-enrolled, suspended, expelled) (8)
+                Edit student details (grades, name, personal information, special information, etc.) (9)
+                View student details, location, attendance, etc. (10, 11)
+                View classroom details and layout en masse (12)
+                View average statistics and total statistics per class (13)
+                Exit class (14)
+            Move past day (cannot be reversed, will involve an "are you sure?") (15)
+            Set Holiday (sets the day as a holiday) (16)
+            Close class early (17)
 
     Phase 3:
-        View Details of each student, and attendance
-        View average statistics and total statistics per class
-        Close classes one by one
+        View Details of each student, and attendance (10, 11)
+        View average statistics and total statistics per class (13)
+        Close classes one by one (17)
 
 
 Program 2:

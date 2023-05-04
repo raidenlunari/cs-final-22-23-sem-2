@@ -1,3 +1,18 @@
 Definitions:
-    Phase 1 (1) - The initial function which activates and allows one to set the initial state and details of a classroom
-    Set Classroom Function (2) - A function which has a subset of two functions; inputting a grid of tables
+    Phase 1 (1) - The initial function which activates and allows one to set the initial state and details of a classroom and begins the program
+    Set Classroom (2) - Allows the teacher to assign each student a number or value and certain code. Allows teacher to set initial state of the classes (classes, initial date, etc.)
+    Set Initial Student Details (3) - Allows the teacher to give each student a customizable identity within the program to allow them to identify the student better.
+    Edit Student Attendance (4) - Allows the teacher to assign a student Unexcused Absence, Absence, Tardy, or Present for the day
+    Mass Edit Student Attendance (5) - Allows the teacher to assign many students at once a single type of attendance by yping their names or codes into the function
+    Edit Student Attendance Another Day (6) - Allows the teacher to change the attendance of a student which was set on another day
+    Edit Student Location In Class (7) - Allows the teacher to change a student's code or identify
+    Edit Student Status (8) - Allows teacher to enroll or unenroll students or possibly suspend or expel them if needed
+    Edit Student Details (9) - Allows teacher to edit a student's details in a class and their personal information or other information.
+    View Student Attendance (10) - Pulls attendance details from another file and posts them for the teacher to see by inputting a student's name or ID in a class
+    View Student Details (11) - Pulls a student's details from another file and posts them for the teacher to see by inputting a student's name or ID in a class
+    View Class Details (12) - Allows the teacher to see the class's details such as class name, subject, etc.
+    View Class Stats (13) - Allows the teacher to see the entire class's stats, such as average missed attendance, total missed classes, etc.
+    Exit Class (14) - Change the class and go to another class
+    Next Day (15) - Ends the current day cycle and cannot be reversed - date moves to next available school day and begins next day
+    Holiday (16) - Sets a certain day as a holiday and skips the day
+    Close Class (17) - Closes the class, prints out all details and removes class from list
