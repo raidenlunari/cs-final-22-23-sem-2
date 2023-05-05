@@ -12,7 +12,7 @@ Program 1: Attendance (moon)
     Allow the teacher to add holiday days if they choose to do so and mark the day off
 
     All above actions involve creating a new type of function, which can be called depending on what the user chooses to input as action on the main function
-    The teacher will go through three main functions; one to input the class details, one to edit the details per student per class per day, and one to check details at the end of a six-
+    The teacher will go through three main functions; one to input the class details, one to edit the details per student per class per day, and one to check details at the end of a six-week period
     After one of these main functions has been completed, it cannot be rerun, but the details which have been set during the function can be changed if another function allows it.
 
     For the numbers, see the wiki (attendance_wiki), gives details for all of them and their functions if not given here
