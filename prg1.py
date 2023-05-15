@@ -10,14 +10,34 @@ def chooseClass():
     successChooseClass = 0  # While loop variable
 
     while successChooseClass == 0:
-        global successChooseClass
-
         classInput = input("Input Class to Enter: ")  # Enters the class from the user
         if classInput in classList:  # Ensures that the class is actually part of the class list
             successChooseClass = 1
             return classInput  # Returns the class which is requested
         else:
             print("Invalid Class. Try again.")  # The class wasn't part of the class list
+
+
+def chooseDay():
+    '''
+        This function checks if a day is valid in the range which is specified.
+        It can: Check the day, check the type, check the range, return a value
+        It cannot: do anything with the day
+    '''
+    print("The day entered must be a day between 1-30, like day 1, day 2, day 3, day 6 (week 2, day 1), etc.")
+
+    daySuccess = 0
+
+    while daySuccess == 0:  # checks if the day is succeeding and loops if not
+        day = input("Input the day to change: ")  # inputs the day
+        if day.isnumeric():  # checks if it's an actual integer
+            if int(day) <= 30:  # checks the range
+                daySuccess += 1
+                return day  # returns a value
+            else:
+                print("Invalid Day. Day must be between 1 and 30. Try again.")
+        else:
+            print("Invalid type. Try again.")
 
 
 def chooseStudent(classInput):
@@ -32,11 +52,10 @@ def chooseStudent(classInput):
     print("The students which you can pick from are named Student1, Student2, Student3, Student4, and Student5.")
 
     while successChooseStudent == 0:
-        global successChooseStudent
 
         studentInput = input("Input Student to Check: ")  # Enters the student from the user
         if studentInput in students:
-            successChooseStudent = 1
+            successChooseStudent += 1
             return studentInput
         else:
             print("Invalid student. Try again.")
@@ -52,7 +71,6 @@ def chooseStatus():
     successChooseStatus = 0  # While loop variable
 
     while successChooseStatus == 0:
-        global successChooseStatus
 
         print('The attendance statuses are:')  # Informs the student of the different attendances
         print("Absent (A), and Present (P)")
@@ -87,28 +105,173 @@ def setStudentID(classInput, day, student):
             return '3'
 
     def findSecondID():  # Finds the second ID of the student (week + day)
-        if day > 5:
-            week = (day // 5) + 1
-            dayRem = day % 5
+        if int(day) > 5 and int(day) % 5 == 0:  # checks if the thing is valid and a special case
+            week = (int(day) // 5)
+            dayRem = 5
+            return str(week)+str(dayRem)
+        elif int(day) > 5:  # does the special thing but not for the special case
+            week = (int(day) // 5) + 1
+            dayRem = int(day) % 5
             return str(week)+str(dayRem)
         else:
-            return "1"+str(day)
+            return "1"+str(day)  # if the thing is less than 5, nothing must be done
 
     def findThirdID():  # Finds the third ID of the student (actual student ID)
         return str(student[7])
 
-    finalID = findFirstID()+findSecondID()+findThirdID()
+    finalID = findFirstID()+findSecondID()+findThirdID()  # combines everything to make one final ID
     return finalID
 
 
-def editStatus(studentID, status, day):
+def editStatus(studentID, status):
     '''
         This function is made to assign a status "status" to a student "studentID" on a certain day "day".
         It can: Take three different inputs, use them to assign a status, sort through days, return an output, sort through nested lists
         It cannot: Do any sorting by itself, find the students by itself, find the status by itself, find the day by itself
         It is: case-sensitive, requires inputs in specific order or else it will return an error print message
     '''
-    # edits the status for a certain student on a certain day
+
+    global studentDetailsPreCalc, studentDetailsBiology, studentDetailsChemistry
+
+    checkID = (int(studentID[3])+(((int(studentID[2])-1)+((int(studentID[1])-1)*5))*5))  # checks the location
+    studentStatusPreCalc = studentDetailsPreCalc[checkID-1][1]  # status of the student in precalculus
+    studentStatusBiology = studentDetailsBiology[checkID-1][1]  # status of the student in biology
+    studentStatusChemistry = studentDetailsChemistry[checkID-1][1]  # status of the student in chemistry
+
+    if studentID[0] == '1':  # checks if the student thing chosen to check was in precalc
+        if studentStatusPreCalc:
+            currentStatus = 'present'
+        else:
+            currentStatus = 'absent'
+
+    elif studentID[0] == '2':  # checks if the student thing chosen to check was in biology
+        if studentStatusBiology:
+            currentStatus = 'present'
+        else:
+            currentStatus = 'absent'
+
+    elif studentID[0] == '3':  # checks if the student thing chosen to check was in chemistry
+        if studentStatusChemistry:
+            currentStatus = 'present'
+        else:
+            currentStatus = 'absent'
+
+    print("The current status of this student on this day is", currentStatus+".")  # prints the status to make sure it should be changed
+    doEdit = input("Would you like to change this to your chosen status? (yes/no) or (y/n): ")  # checks if the person wants to change it
+    if doEdit == 'yes' or doEdit == 'y':  # changes the status based on class
+        if studentID[0] == '1':
+            studentDetailsPreCalc[checkID-1][1] = status
+        elif studentID[0] == '2':
+            studentDetailsBiology[checkID-1][1] = status
+        elif studentID[0] == '3':
+            studentDetailsChemistry[checkID-1][1] = status
+    else:  # does nothing if nothing is chosen to be done
+        pass
+
+
+def main():  # the main function
+    '''
+        Runs the main function which is everything except finally viewing the details
+        Can do: everything except viewing the details
+        Cannot do: viewing the details
+    '''
+
+    print("This is a program to track the attendance of five students between three classes over 30 days.")
+    print("The classes are Precalculus, Biology, and Chemistry.")
+    print("")
+    satisfied = 0
+
+    while satisfied == 0:
+        classChoose = chooseClass()  # chooses the class
+        print("")
+        studentChoose = chooseStudent(classChoose)  # chooses the student
+        print("")
+        dayChoose = chooseDay()  # chooses the day
+        print("")
+        statusChoose = chooseStatus()  # chooses the status to set
+        print("")
+
+        studentID = setStudentID(classChoose, dayChoose, studentChoose)  # sets the student ID
+        print("This action's ID is", studentID+".")  # sends the student ID
+        editStatus(studentID, statusChoose)
+        print("")
+        satisfiedInput = input("Are you satisfied with all your decisions? (yes/no) or (y/n): ")  # checks if the person is done yet
+        if satisfiedInput == 'yes' or satisfiedInput == 'y':
+            satisfied += 1  # ends the main
+            print("")
+        else:
+            print("Continuing.")  # continues if not
+            print("")
+
+
+def viewIndividualDetails(studentID):
+    '''
+        Checks the initial student ID which allows a thing to be printed which is the attendance
+        Can: print out an attendance based on a student ID
+        Cannot: make the student ID, change attendance, print more than one at once
+    '''
+
+    global studentDetailsPreCalc, studentDetailsBiology, studentDetailsChemistry
+
+    checkID = (int(studentID[3])+(((int(studentID[2])-1)+((int(studentID[1])-1)*5))*5))  # basically checks the ID just like in the other function
+    studentStatusPreCalc = studentDetailsPreCalc[checkID-1][1]
+    studentStatusBiology = studentDetailsBiology[checkID-1][1]
+    studentStatusChemistry = studentDetailsChemistry[checkID-1][1]
+
+    if studentID[0] == '1':  # checks if the class is precalculus
+        if studentStatusPreCalc:
+            currentStatus = 'present'
+        else:
+            currentStatus = 'absent'
+
+    elif studentID[0] == '2':  # checks if the class is biology
+        if studentStatusBiology:
+            currentStatus = 'present'
+        else:
+            currentStatus = 'absent'
+
+    elif studentID[0] == '3':  # checks if the class is in chemistry
+        if studentStatusChemistry:
+            currentStatus = 'present'
+        else:
+            currentStatus = 'absent'
+
+    print("The current status of this student on this day is", currentStatus+".") # prints the status
+
+
+def viewDetails():
+    '''
+        Views the details, can view en masse or just one student
+        Can: view the students
+        Cannot: actually handle the details, change any more details of the attendance
+    '''
+
+    global studentDetailsPreCalc, studentDetailsBiology, studentDetailsChemistry
+
+    satisfiedView = 0
+
+    while satisfiedView == 0:
+        doWhat = input("Input v for view individually or m for view all at once: ")
+        print("")
+        if doWhat == 'm':
+            print(studentDetailsPreCalc)
+            print(studentDetailsBiology)
+            print(studentDetailsChemistry)
+        elif doWhat == 'v':
+            classInputted = input("Input the class to check: ")
+            dayInputted = input("Input the day to check: ")
+            studentInputted = input("Input the student to check: ")
+            studentIDView = setStudentID(classInputted, dayInputted, studentInputted)
+            viewIndividualDetails(studentIDView)
+
+        satisfiedYet = input("Are you satisfied yet? (yes/no) or (y/n): ")
+        if satisfiedYet == 'yes' or satisfiedYet == 'y':
+            print("Finished.")
+            satisfiedView += 1
+        else:
+            print("Continuing.")
+
+
 
 
 classList = ('Precalculus', 'Biology', 'Chemistry')  # Class List
@@ -118,3 +281,5 @@ studentDetailsPreCalc = [['1111', False], ['1112', False], ['1113', False], ['11
 studentDetailsBiology = [['2111', False], ['2112', False], ['2113', False], ['2114', False], ['2115', False], ['2121', False], ['2122', False], ['2123', False], ['2124', False], ['2125', False], ['2131', False], ['2132', False], ['2133', False], ['2134', False], ['2135', False], ['2141', False], ['2142', False], ['2143', False], ['2144', False], ['2145', False], ['2151', False], ['2152', False], ['2153', False], ['2154', False], ['2155', False], ['2211', False], ['2212', False], ['2213', False], ['2214', False], ['2215', False], ['2221', False], ['2222', False], ['2223', False], ['2224', False], ['2225', False], ['2231', False], ['2232', False], ['2233', False], ['2234', False], ['2235', False], ['2241', False], ['2142', False], ['2243', False], ['2244', False], ['2245', False], ['2251', False], ['2252', False], ['2253', False], ['2254', False], ['2255', False], ['2311', False], ['2312', False], ['2313', False], ['2314', False], ['2315', False], ['2321', False], ['2322', False], ['2323', False], ['2324', False], ['2325', False], ['2331', False], ['2332', False], ['2333', False], ['2334', False], ['2335', False], ['2341', False], ['2342', False], ['2343', False], ['2344', False], ['2345', False], ['2351', False], ['2352', False], ['2353', False], ['2354', False], ['2355', False], ['2411', False], ['2412', False], ['2413', False], ['2414', False], ['2415', False], ['2421', False], ['2422', False], ['2423', False], ['2424', False], ['2425', False], ['2431', False], ['2432', False], ['2433', False], ['2434', False], ['2435', False], ['2441', False], ['2442', False], ['2443', False], ['2444', False], ['2445', False], ['2451', False], ['2452', False], ['2453', False], ['2454', False], ['2455', False], ['2511', False], ['2512', False], ['2513', False], ['2514', False], ['2515', False], ['2521', False], ['2522', False], ['2523', False], ['2524', False], ['2525', False], ['2511', False], ['2532', False], ['2533', False], ['2534', False], ['2535', False], ['2541', False], ['2542', False], ['2543', False], ['2544', False], ['2545', False], ['2551', False], ['2552', False], ['2553', False], ['2554', False], ['2555', False], ['2611', False], ['2612', False], ['2613', False], ['2614', False], ['2615', False], ['2621', False], ['2622', False], ['2623', False], ['2624', False], ['2625', False], ['2631', False], ['2632', False], ['2633', False], ['2634', False], ['2635', False], ['2641', False], ['2642', False], ['2643', False], ['2644', False], ['2645', False], ['2651', False], ['2652', False], ['2653', False], ['2654', False], ['2655', False]]
 studentDetailsChemistry = [['3111', False], ['3112', False], ['3113', False], ['3114', False], ['3115', False], ['3121', False], ['3122', False], ['3123', False], ['3124', False], ['3125', False], ['3131', False], ['3132', False], ['3133', False], ['3134', False], ['3135', False], ['3141', False], ['3142', False], ['3143', False], ['3144', False], ['3145', False], ['3151', False], ['3152', False], ['3153', False], ['3154', False], ['3155', False], ['3211', False], ['3212', False], ['3213', False], ['3214', False], ['3215', False], ['3221', False], ['3222', False], ['3223', False], ['3224', False], ['3225', False], ['3231', False], ['3232', False], ['3233', False], ['3234', False], ['3235', False], ['3241', False], ['3142', False], ['3243', False], ['3244', False], ['3245', False], ['3251', False], ['3252', False], ['3253', False], ['3254', False], ['3255', False], ['3311', False], ['3312', False], ['3313', False], ['3314', False], ['3315', False], ['3321', False], ['3322', False], ['3323', False], ['3324', False], ['3325', False], ['3331', False], ['3332', False], ['3333', False], ['3334', False], ['3335', False], ['3341', False], ['3342', False], ['3343', False], ['3344', False], ['3345', False], ['3351', False], ['3352', False], ['3353', False], ['3354', False], ['3355', False], ['3411', False], ['3412', False], ['3413', False], ['3414', False], ['3415', False], ['3421', False], ['3422', False], ['3423', False], ['3424', False], ['3425', False], ['3431', False], ['3432', False], ['3433', False], ['3434', False], ['3435', False], ['3441', False], ['3442', False], ['3443', False], ['3444', False], ['3445', False], ['3451', False], ['3452', False], ['3453', False], ['3454', False], ['3455', False], ['3511', False], ['3512', False], ['3513', False], ['3514', False], ['3515', False], ['3521', False], ['3522', False], ['3523', False], ['3524', False], ['3525', False], ['3511', False], ['3532', False], ['3533', False], ['3534', False], ['3535', False], ['3541', False], ['3542', False], ['3543', False], ['3544', False], ['3545', False], ['3551', False], ['3552', False], ['3553', False], ['3554', False], ['3555', False], ['3611', False], ['3612', False], ['3613', False], ['3614', False], ['3615', False], ['3621', False], ['3622', False], ['3623', False], ['3624', False], ['3625', False], ['3631', False], ['3632', False], ['3633', False], ['3634', False], ['3635', False], ['3641', False], ['3642', False], ['3643', False], ['3644', False], ['3645', False], ['3651', False], ['3652', False], ['3653', False], ['3654', False], ['3655', False]]
 
+main()
+viewDetails()
