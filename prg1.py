@@ -158,7 +158,7 @@ def editStatus(studentID, status):
 
     print("The current status of this student on this day is", currentStatus+".")  # prints the status to make sure it should be changed
     doEdit = input("Would you like to change this to your chosen status? (yes/no) or (y/n): ")  # checks if the person wants to change it
-    if doEdit == 'yes' or doEdit == 'y':  # changes the status based on class
+    if doEdit == 'yes' or doEdit == 'y' or doEdit == 'Y':  # changes the status based on class
         if studentID[0] == '1':
             studentDetailsPreCalc[checkID-1][1] = status
         elif studentID[0] == '2':
@@ -166,7 +166,7 @@ def editStatus(studentID, status):
         elif studentID[0] == '3':
             studentDetailsChemistry[checkID-1][1] = status
     else:  # does nothing if nothing is chosen to be done
-        pass
+        print("Did not do anything.")
 
 
 def main():  # the main function
@@ -196,7 +196,7 @@ def main():  # the main function
         editStatus(studentID, statusChoose)
         print("")
         satisfiedInput = input("Are you satisfied with all your decisions? (yes/no) or (y/n): ")  # checks if the person is done yet
-        if satisfiedInput == 'yes' or satisfiedInput == 'y':
+        if satisfiedInput == 'yes' or satisfiedInput == 'y' or satisfiedInput == 'Y':
             satisfied += 1  # ends the main
             print("")
         else:
@@ -254,17 +254,28 @@ def viewDetails():
         doWhat = input("Input v for view individually or m for view all at once: ")
         print("")
         if doWhat == 'm':
+            print("In this output, there will be many brackets filled with two values; a number and a boolean.")
+            print("The number represents class (1, 2, or 3), week (1-6), day (1-5 in the week), and student (1-5)")
+            print("Then, True means present, and False means absent.")
+            print("By default, all students are absent until proven otherwise.")
+            print("")
             print(studentDetailsPreCalc)
             print(studentDetailsBiology)
             print(studentDetailsChemistry)
+            print("")
         elif doWhat == 'v':
-            classInputted = input("Input the class to check: ")
-            dayInputted = input("Input the day to check: ")
-            studentInputted = input("Input the student to check: ")
+            classInputted = chooseClass()
+            print("")
+            dayInputted = chooseDay()
+            print("")
+            studentInputted = chooseStudent(classInputted)
+            print("")
             studentIDView = setStudentID(classInputted, dayInputted, studentInputted)
             viewIndividualDetails(studentIDView)
+        else:
+            print("Invalid response.")
 
-        satisfiedYet = input("Are you satisfied yet? (yes/no) or (y/n): ")
+        satisfiedYet = input("Are you satisfied with your choices yet? (yes/no) or (y/n): ")
         if satisfiedYet == 'yes' or satisfiedYet == 'y':
             print("Finished.")
             satisfiedView += 1
