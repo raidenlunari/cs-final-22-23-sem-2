@@ -29,7 +29,7 @@ def chooseDay():
     daySuccess = 0
 
     while daySuccess == 0:  # checks if the day is succeeding and loops if not
-        day = input("Input the day to change: ")  # inputs the day
+        day = input("Input the day: ")  # inputs the day
         if day.isnumeric():  # checks if it's an actual integer
             if int(day) <= 30:  # checks the range
                 daySuccess += 1
