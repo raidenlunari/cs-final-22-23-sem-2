@@ -12,7 +12,7 @@ def chooseClass():
     while successChooseClass == 0:
         classInput = input("Input Class to Enter: ")  # Enters the class from the user
         if classInput in classList:  # Ensures that the class is actually part of the class list
-            successChooseClass = 1
+            successChooseClass += 1
             return classInput  # Returns the class which is requested
         else:
             print("Invalid Class. Try again.")  # The class wasn't part of the class list
@@ -177,6 +177,11 @@ def main():  # the main function
     '''
 
     print("This is a program to track the attendance of five students between three classes over 30 days.")
+    print("This program will ask you for a class, a day, and a student to set the attendance for.")
+    print("There are two types of attendance: present and absent, or True and False.")
+    print("The program will tell you what the ID is, which will identify a combination of day, class, and student.")
+    print("It will also print the current status of the student and ask you if you want to change it, allowing you to view.")
+    print("")
     print("The classes are Precalculus, Biology, and Chemistry.")
     print("")
     satisfied = 0
@@ -262,6 +267,7 @@ def viewDetails():
             print(studentDetailsPreCalc)  # literally just prints the entire precalc list
             print(studentDetailsBiology)  # literally just prints the entire bio list
             print(studentDetailsChemistry)  # literally just prints the entire chem list
+            print("Before, each of your actions were given a code. The above is what this code means. Find the code to find the student status.")
             print("")
         elif doWhat == 'v':
             classInputted = chooseClass()  # asks for class
