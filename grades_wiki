@@ -1,0 +1,35 @@
+Program  2 - grade tracking (Ekam)
+
+
+Create a special list to keep track of each student's grades. The list will have the names of the students as keys, and their grades for each assignment as values.
+Make a list of options for the teacher: Enter, Edit, View, and Exit.
+Ask the teacher to choose an option and do what they picked.
+For the "Enter" option:
+Ask the teacher to put in the grades for each student.
+Go through the list of 5 students and do the following:
+Ask the teacher for the name of the student.
+Make a blank list to store the grades for this student.
+Go through the list of 6 assignments and do the following:
+Ask the teacher for the grade for that assignment.
+Add the grade to the student's list of grades.
+Add the student and their grades to the special list.
+For the "Edit" option:
+Ask the teacher to put in the name of the student they want to change grades for.
+Check if the student is in the special list. If not, show an error message.
+If the student is in the list, go through the list of 6 assignments and do the following:
+Ask the teacher for the new grade for that assignment.
+Change the grade for that assignment in the student's list of grades.
+For the "View" option:
+Check if there are no grades in the special list. If so, show a message that says no grades have been entered.
+If there are grades, go through each student and do the following:
+Show the name of the student.
+Go through their grades and show each assignment and its grade.
+For the "Exit" option:
+End the program or stop the loop to finish the program.
+Make sure to check and handle any mistakes the teacher might make when putting in information, like making sure the grades are valid and the student names are correct.
+Try out the program to make sure each option works correctly.
+Enter, edit, and view grades for different students and assignments to make sure the system is accurate.
+This plan shows the steps to create a program that keeps track of grades for assignments. You can begin writing the code in Python using these steps to make the complete system.
+
+
+
