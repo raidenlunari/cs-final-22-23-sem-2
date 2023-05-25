@@ -1,77 +1,107 @@
-#Start with empty note lists for all classes
-class1_notes = [""] * 5
-class2_notes = [""] * 5
-class3_notes = [""] * 5
+def calculate_letter_grade(average_score):
+    if average_score >= 97:
+        return 'A+'
+    elif average_score >= 93:
+        return 'A'
+    elif average_score >= 90:
+        return 'A-'
+    elif average_score >= 87:
+        return 'B+'
+    elif average_score >= 83:
+        return 'B'
+    elif average_score >= 80:
+        return 'B-'
+    elif average_score >= 77:
+        return 'C+'
+    elif average_score >= 73:
+        return 'C'
+    elif average_score >= 70:
+        return 'C-'
+    elif average_score >= 67:
+        return 'D+'
+    elif average_score >= 63:
+        return 'D'
+    elif average_score >= 60:
+        return 'D-'
+    else:
+        return 'F'
+#the function above makes my life a lot easier as it shows the students grade is (as a letter)
+#below i am assigning variables
+classes = ['class1', 'class2', 'class3']
+students = ['student1', 'student2', 'student3', 'student4', 'student5']
+assignments = ['assignment1', 'assignment2', 'assignment3', 'assignment4', 'assignment5', 'assignment6']
+scores = [0] * len(assignments)
 
-#Function to create a new note
-def create_note():
-    note_number = get_note_number_from_user()  #Get the note number from the user
-    note_content = get_note_content_from_user()  #Get the note content from the user
-    current_notes[note_number - 1] = note_content  #Update the note in the current_notes list
-    print("Note added successfully.")
-
-#Function to edit an existing note
-def edit_note():
-    note_number = get_note_number_from_user()  #Get the note number from the user
-    current_note_content = current_notes[note_number - 1]  #Get the current note content
-    print(f"Previous Note Content: {current_note_content}")  #Print previous note content
-    note_content = get_note_content_from_user()  #Get the updated note content from the user
-    current_notes[note_number - 1] = note_content  #Update the note in the current_notes list
-    print("Note edited successfully.")
-
-#Function to view an existing note
-def view_note():
-    note_number = get_note_number_from_user()  #Get the note number from the user
-    note_content = current_notes[note_number - 1]  #Get the note content from the current_notes list
-    print(f"Note {note_number}: {note_content}")
-
-#Function to get the note number from the user
-def get_note_number_from_user():
-    while True:
-        try:
-            note_number = int(input("Enter note number (1-5): "))  #Prompt user for note number
-            if note_number < 1 or note_number > 5:
-                raise ValueError
-            return note_number
-        except ValueError:
-            print("Invalid note number. Please try again.")
-
-#Function to get the note content from the user
-def get_note_content_from_user():
-    note_content = input("Enter note content: ")  #Prompt user for note content
-    return note_content
-
-#Main program loop
 while True:
-    class_choice = input("Select your class (1, 2, or 3): ")  #Prompt user for class choice
-    
-    if class_choice == "1":
-        current_notes = class1_notes  #Set current_notes to class1_notes
-        class_name = "Class 1"  
-    elif class_choice == "2":
-        current_notes = class2_notes  #Set current_notes to class2_notes
-        class_name = "Class 2"  
-    elif class_choice == "3":
-        current_notes = class3_notes  #Set current_notes to class3_notes
-        class_name = "Class 3"  
-    else:
-        print("Invalid class selection. Please try again.")
+    class_choice = int(input("Which class would you like to access? (1-3) "))
+    if class_choice < 1 or class_choice > 3:
+         #the following happens when a teacher puts the wrong syntax and the program does nott understand
+        print("Invalid selection. Please select a valid class.")
         continue
-    
-    print(f"Selected Class: {class_name}")
-    
-    action_choice = input("Select an action (create, edit, view): ")  #Prompt user for action choice
-    
-    if action_choice == "create":
-        create_note()  #Call create_note function
-    elif action_choice == "edit":
-        edit_note()  #Call edit_note function
+
+    class_name = classes[class_choice - 1]
+#this lets the teacher decide which students grade tthey would like to view/edit/enter
+    student_choice = int(input("Which student would you like to access? (1-5) "))
+    if student_choice < 1 or student_choice > 5:
+        print("Invalid selection. Please select a valid student.")
+        continue
+
+    student_name = students[student_choice - 1]
+
+    action_choice = input("Would you like to enter, view, or edit? ")
+    if action_choice == "enter":
+        assignment_choice = int(input("Which assignment would you like to enter a score for? (1-6) "))
+        if assignment_choice < 1 or assignment_choice > 6:
+            #the following happens when a teacher puts the wrong syntax and the program does nott understand
+            print("Invalid selection. Please select a valid assignment.")
+            continue
+        #this saves the score that the teacher puts in for the assignment
+        score = int(input("Enter a score out of 100: "))
+        scores[assignment_choice - 1] = score
+
     elif action_choice == "view":
-        view_note()  #Call view_note function
+        view_choice = input("Would you like to view an assignment or the average? ")
+        #the following happens when the teacher chooses to see a specific assignment grade
+        if view_choice == "assignment":
+            assignment_choice = int(input("Which assignment would you like to view? (1-6) "))
+            if assignment_choice < 1 or assignment_choice > 6:
+                 #the following happens when a teacher puts the wrong syntax and the program does nott understand
+                print("Invalid selection. Please select a valid assignment.")
+                continue
+
+            print("Score for", assignments[assignment_choice - 1] + ":", scores[assignment_choice - 1])
+ #the following happens when the teacher chooses to see the overall grade
+        elif view_choice == "average":
+            average_score = sum(scores) / len(scores)
+            #this uses the function at the top of the program to calculate the letter grade which is printed below.
+            letter_grade = calculate_letter_grade(average_score)
+            
+            print("Average Score:", average_score)
+            print("Letter Grade:", letter_grade)
+    #this is for the edit option, so the teacher can change grades that have been inputted
+    elif action_choice == "edit":
+        edit_choice = int(input("Which assignment would you like to edit? (1-6) "))
+         #the following happens when a teacher puts the wrong syntax and the program does nott understand
+        if edit_choice < 1 or edit_choice > 6:
+            print("Invalid selection. Please select a valid assignment.")
+            continue
+
+        new_score = int(input("Enter a new score out of 100: "))
+        scores[edit_choice - 1] = new_score
+
+        average_score = sum(scores) / len(scores)
+        letter_grade = calculate_letter_grade(average_score)
+        print("Average Score:", average_score)
+        print("Letter Grade:", letter_grade)
+        #the following happens when a teacher puts the wrong syntax and the program does nott understand
     else:
-        print("Invalid action selection. Please try again.")
-    
-    quit_choice = input("Do you want to quit? (y/n): ")
-    
-    if quit_choice.lower() == "y":
-        break  #End the program
+        print("Invalid selection. Please select a valid action.")
+        #this continue is here so the teacher can try again
+        continue
+
+# i added this so that the teacher is actually prompted whether they want to stop or not, so the program doesnt keep looping and the teacher doesnt have to click the stop button
+    done_choice = input("Are you done? (yes/no) ")
+    if done_choice.lower() == "yes":
+        break
+
+
