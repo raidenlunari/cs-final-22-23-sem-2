@@ -54,7 +54,7 @@ def chooseStudent(classInput):
     while successChooseStudent == 0:
 
         studentInput = input("Input Student to Check: ")  # Enters the student from the user
-        if studentInput in students:
+        if studentInput.lower() in students:
             successChooseStudent += 1
             return studentInput
         else:
@@ -182,7 +182,7 @@ def mainAttendance():  # the main function
     print("The program will tell you what the ID is, which will identify a combination of day, class, and student.")
     print("It will also print the current status of the student and ask you if you want to change it, allowing you to view.")
     print("")
-    print("The classes are Precalculus, Biology, and Chemistry.")
+    print("The classes are Precalculus, Biology, and Chemistry. Enter them as they are stated.")
     print("")
     satisfied = 0
 
@@ -292,7 +292,7 @@ def viewDetails():
 
 
 classList = ('Precalculus', 'Biology', 'Chemistry')  # Class List
-students = ('Student1', 'Student2', 'Student3', 'Student4', 'Student5')
+students = ('student1', 'student2', 'student3', 'student4', 'student5')
 
 studentDetailsPreCalc = [['1111', False], ['1112', False], ['1113', False], ['1114', False], ['1115', False], ['1121', False], ['1122', False], ['1123', False], ['1124', False], ['1125', False], ['1131', False], ['1132', False], ['1133', False], ['1134', False], ['1135', False], ['1141', False], ['1142', False], ['1143', False], ['1144', False], ['1145', False], ['1151', False], ['1152', False], ['1153', False], ['1154', False], ['1155', False], ['1211', False], ['1212', False], ['1213', False], ['1214', False], ['1215', False], ['1221', False], ['1222', False], ['1223', False], ['1224', False], ['1225', False], ['1231', False], ['1232', False], ['1233', False], ['1234', False], ['1235', False], ['1241', False], ['1242', False], ['1243', False], ['1244', False], ['1245', False], ['1251', False], ['1252', False], ['1253', False], ['1254', False], ['1255', False], ['1311', False], ['1312', False], ['1313', False], ['1314', False], ['1315', False], ['1321', False], ['1322', False], ['1323', False], ['1324', False], ['1325', False], ['1331', False], ['1332', False], ['1333', False], ['1334', False], ['1335', False], ['1341', False], ['1342', False], ['1343', False], ['1344', False], ['1345', False], ['1351', False], ['1352', False], ['1353', False], ['1354', False], ['1355', False], ['1411', False], ['1412', False], ['1413', False], ['1414', False], ['1415', False], ['1421', False], ['1422', False], ['1423', False], ['1424', False], ['1425', False], ['1431', False], ['1432', False], ['1433', False], ['1434', False], ['1435', False], ['1441', False], ['1442', False], ['1443', False], ['1444', False], ['1445', False], ['1451', False], ['1452', False], ['1453', False], ['1454', False], ['1455', False], ['1511', False], ['1512', False], ['1513', False], ['1514', False], ['1515', False], ['1521', False], ['1522', False], ['1523', False], ['1524', False], ['1525', False], ['1511', False], ['1532', False], ['1533', False], ['1534', False], ['1535', False], ['1541', False], ['1542', False], ['1543', False], ['1544', False], ['1545', False], ['1551', False], ['1552', False], ['1553', False], ['1554', False], ['1555', False], ['1611', False], ['1612', False], ['1613', False], ['1614', False], ['1615', False], ['1621', False], ['1622', False], ['1623', False], ['1624', False], ['1625', False], ['1631', False], ['1632', False], ['1633', False], ['1634', False], ['1635', False], ['1641', False], ['1642', False], ['1643', False], ['1644', False], ['1645', False], ['1651', False], ['1652', False], ['1653', False], ['1654', False], ['1655', False]]
 studentDetailsBiology = [['2111', False], ['2112', False], ['2113', False], ['2114', False], ['2115', False], ['2121', False], ['2122', False], ['2123', False], ['2124', False], ['2125', False], ['2131', False], ['2132', False], ['2133', False], ['2134', False], ['2135', False], ['2141', False], ['2142', False], ['2143', False], ['2144', False], ['2145', False], ['2151', False], ['2152', False], ['2153', False], ['2154', False], ['2155', False], ['2211', False], ['2212', False], ['2213', False], ['2214', False], ['2215', False], ['2221', False], ['2222', False], ['2223', False], ['2224', False], ['2225', False], ['2231', False], ['2232', False], ['2233', False], ['2234', False], ['2235', False], ['2241', False], ['2142', False], ['2243', False], ['2244', False], ['2245', False], ['2251', False], ['2252', False], ['2253', False], ['2254', False], ['2255', False], ['2311', False], ['2312', False], ['2313', False], ['2314', False], ['2315', False], ['2321', False], ['2322', False], ['2323', False], ['2324', False], ['2325', False], ['2331', False], ['2332', False], ['2333', False], ['2334', False], ['2335', False], ['2341', False], ['2342', False], ['2343', False], ['2344', False], ['2345', False], ['2351', False], ['2352', False], ['2353', False], ['2354', False], ['2355', False], ['2411', False], ['2412', False], ['2413', False], ['2414', False], ['2415', False], ['2421', False], ['2422', False], ['2423', False], ['2424', False], ['2425', False], ['2431', False], ['2432', False], ['2433', False], ['2434', False], ['2435', False], ['2441', False], ['2442', False], ['2443', False], ['2444', False], ['2445', False], ['2451', False], ['2452', False], ['2453', False], ['2454', False], ['2455', False], ['2511', False], ['2512', False], ['2513', False], ['2514', False], ['2515', False], ['2521', False], ['2522', False], ['2523', False], ['2524', False], ['2525', False], ['2511', False], ['2532', False], ['2533', False], ['2534', False], ['2535', False], ['2541', False], ['2542', False], ['2543', False], ['2544', False], ['2545', False], ['2551', False], ['2552', False], ['2553', False], ['2554', False], ['2555', False], ['2611', False], ['2612', False], ['2613', False], ['2614', False], ['2615', False], ['2621', False], ['2622', False], ['2623', False], ['2624', False], ['2625', False], ['2631', False], ['2632', False], ['2633', False], ['2634', False], ['2635', False], ['2641', False], ['2642', False], ['2643', False], ['2644', False], ['2645', False], ['2651', False], ['2652', False], ['2653', False], ['2654', False], ['2655', False]]
@@ -342,7 +342,7 @@ def mainGrades():
             continue
 
         class_name = classes[class_choice - 1]
-    #this lets the teacher decide which students grade tthey would like to view/edit/enter
+        #this lets the teacher decide which students grade tthey would like to view/edit/enter
         student_choice = int(input("Which student would you like to access? (1-5) "))
         if student_choice < 1 or student_choice > 5:
             print("Invalid selection. Please select a valid student.")
@@ -372,12 +372,12 @@ def mainGrades():
                     continue
 
                 print("Score for", assignments[assignment_choice - 1] + ":", scores[assignment_choice - 1])
-    #the following happens when the teacher chooses to see the overall grade
+            #the following happens when the teacher chooses to see the overall grade
             elif view_choice == "average":
                 average_score = sum(scores) / len(scores)
                 #this uses the function at the top of the program to calculate the letter grade which is printed below.
                 letter_grade = calculate_letter_grade(average_score)
-                
+
                 print("Average Score:", average_score)
                 print("Letter Grade:", letter_grade)
         #this is for the edit option, so the teacher can change grades that have been inputted
@@ -401,7 +401,7 @@ def mainGrades():
             #this continue is here so the teacher can try again
             continue
 
-    # i added this so that the teacher is actually prompted whether they want to stop or not, so the program doesnt keep looping and the teacher doesnt have to click the stop button
+        # i added this so that the teacher is actually prompted whether they want to stop or not, so the program doesnt keep looping and the teacher doesnt have to click the stop button
         done_choice = input("Are you done? (yes/no) ")
         if done_choice.lower() == "yes":
             break
